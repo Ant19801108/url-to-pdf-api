@@ -6,6 +6,10 @@
 
 > Web page PDF rendering done right. Microservice for rendering receipts, invoices, or any content. Packaged to an easy API.
 
+**🆕 This project is maintained again.** Dependencies updated (Puppeteer 24, Express 4.21), code fixed for modern Node. Want to try it without setting up a server? Use our Telegram bot:
+
+👉 **[@medbot1_bot](https://t.me/medbot1_bot)** — send a URL, get a PDF back. Free tier (3 PDFs/day), unlimited via subscription.
+
 ![Logo](docs/logo.png)
 
 **⚠️ WARNING ⚠️** *Don't serve this API publicly to the internet unless you are aware of the
