@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const validate = require('express-validation');
+const validate = require('./util/validate');
 const express = require('express');
 const render = require('./http/render-http');
 const config = require('./config');

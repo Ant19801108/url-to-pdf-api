@@ -1,6 +1,5 @@
 const path = require('path');
 const winston = require('winston');
-const _ = require('lodash');
 const config = require('../config');
 
 const COLORIZE = config.NODE_ENV === 'development';
@@ -8,22 +7,24 @@ const COLORIZE = config.NODE_ENV === 'development';
 function createLogger(filePath) {
   const fileName = path.basename(filePath);
 
-  const logger = new winston.Logger({
-    transports: [new winston.transports.Console({
-      colorize: COLORIZE,
-      label: fileName,
-      timestamp: true,
-    })],
-  });
+  const formats = [
+    winston.format.label({ label: fileName }),
+    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    winston.format.splat(),
+  ];
 
-  _setLevelForTransports(logger, config.LOG_LEVEL || 'info');
-  return logger;
-}
+  if (COLORIZE) {
+    formats.push(winston.format.colorize());
+  }
 
-function _setLevelForTransports(logger, level) {
-  _.each(logger.transports, (transport) => {
-    // eslint-disable-next-line
-    transport.level = level;
+  formats.push(
+    winston.format.printf(info => `${info.timestamp} [${info.label}] ${info.level}: ${info.message}`)
+  );
+
+  return winston.createLogger({
+    level: config.LOG_LEVEL || 'info',
+    format: winston.format.combine(...formats),
+    transports: [new winston.transports.Console()],
   });
 }
 
