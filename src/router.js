@@ -49,6 +49,9 @@ function createRouter() {
   };
   router.post('/api/render', validate(postRenderSchema), render.postRender);
 
+  // Screenshot API (link preview): GET /api/screenshot?url=...&width=...&fullPage=true&format=png
+  router.get('/api/screenshot', render.getScreenshot);
+
   router.get('/healthcheck', (req, res) => res.status(200).send('OK'));
 
   return router;

@@ -192,7 +192,39 @@ function getOptsFromQuery(query) {
   return opts;
 }
 
+const getScreenshot = ex.createRoute((req, res) => {
+  const url = req.query.url;
+  if (!_.isString(url)) {
+    ex.throwStatus(400, 'url query parameter is required');
+  }
+
+  const format = (req.query.format === 'jpeg') ? 'jpeg' : 'png';
+  const opts = {
+    url,
+    output: 'screenshot',
+    viewport: {
+      width: req.query.width ? parseInt(req.query.width, 10) : undefined,
+      height: req.query.height ? parseInt(req.query.height, 10) : undefined,
+      deviceScaleFactor: req.query.scale ? parseFloat(req.query.scale) : undefined,
+    },
+    screenshot: {
+      type: format,
+      fullPage: req.query.fullPage === 'true',
+      quality: req.query.quality ? parseInt(req.query.quality, 10) : undefined,
+      omitBackground: req.query.omitBackground === 'true',
+    },
+  };
+
+  assertOptionsAllowed(opts);
+  return renderCore.render(opts)
+    .then((data) => {
+      res.set('content-type', format === 'jpeg' ? 'image/jpeg' : 'image/png');
+      res.send(Buffer.from(data));
+    });
+});
+
 module.exports = {
   getRender,
   postRender,
+  getScreenshot,
 };
