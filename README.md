@@ -10,6 +10,11 @@
 
 👉 **[@medbot1_bot](https://t.me/medbot1_bot)** — send a URL, get a PDF back. Free tier (3 PDFs/day), unlimited via subscription.
 
+**❤️ Support this fork** — the maintenance and hosting are community-funded:
+
+- **ETH (Ethereum / ERC-20):** `0x8AFC3Cc28fFC4cde92D13Bf6DAf6447f5227CF93`
+- **USDT (TON):** `UQAgrUTTUyDnKbC2gQsusk4Fk7n6Nu86Sx8X5rT14FqsrF64`
+
 ![Logo](docs/logo.png)
 
 **⚠️ WARNING ⚠️** *Don't serve this API publicly to the internet unless you are aware of the
