@@ -10,6 +10,8 @@
 
 👉 **[@medbot1_bot](https://t.me/medbot1_bot)** — send a URL, get a PDF back. Free tier (3 PDFs/day), unlimited via subscription.
 
+🔌 **Hosted API (self-serve, no server needed):** developers can call a hosted screenshot/PDF endpoint directly — pay in crypto, get an API key, $0.05 per render. See `http://207.180.196.145:8085/` for pricing and usage.
+
 **❤️ Support this fork** — the maintenance and hosting are community-funded:
 
 - **ETH (Ethereum / ERC-20):** `0x8AFC3Cc28fFC4cde92D13Bf6DAf6447f5227CF93`
